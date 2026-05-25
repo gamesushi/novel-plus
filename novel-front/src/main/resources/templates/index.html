@@ -53,7 +53,7 @@
         </div>
         <div class="rightBox">
             <div class="title cf" id="weekcommend">
-                <h3>本周强推</h3>
+                <h3 th:text="#{home.weekRecommend}">本周强推</h3>
             </div>
             <div class="rightList">
                 <ul id="currentWeek" th:if="${bookMap['2']}">
@@ -73,7 +73,7 @@
     <div class="channelWrap channelPic cf">
         <div class="leftBox">
             <div class="title">
-                <h2 class="on">热门推荐</h2>
+                <h2 class="on" th:text="#{home.hotRecommend}">热门推荐</h2>
             </div>
             <div class="picRecommend cf" id="hotRecBooks" th:if="${bookMap['3']}">
                 <div class="itemsList" th:each="book : ${bookMap['3']}">
@@ -82,7 +82,7 @@
                     </a>
                     <div class="items_txt">
                         <h4><a th:href="'/book/'+${book.bookId}+'.html'" th:text="${book.bookName}"></a></h4>
-                        <p class="author"><a href="javascript:void(0)" th:text="'作者：'+${book.authorName}"></a></p>
+                        <p class="author"><a href="javascript:void(0)" th:text="#{home.authorColon}+${book.authorName}"></a></p>
                         <p class="intro"><a th:href="'/book/'+${book.bookId}+'.html'" th:utext="${book.bookDesc}"></a>
                         </p>
                     </div>
@@ -93,14 +93,14 @@
         <div id="bookrank1_ShowBookRank">
             <div class="rightBox ">
                 <div class="title cf">
-                    <h3 class="on">点击榜单</h3>
+                    <h3 class="on" th:text="#{home.clickRank}">点击榜单</h3>
                 </div>
                 <div class="rightList">
                     <ul id="clickRankBooks">
 
 
                     </ul>
-                    <div class="more"><a href="/book/book_ranking.html">查看更多&gt;</a></div>
+                    <div class="more"><a href="/book/book_ranking.html" th:text="#{home.viewMore}">查看更多&gt;</a></div>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
     <div class="channelWrap channelPic cf">
         <div class="leftBox">
             <div class="title">
-                <h2>精品推荐</h2>
+                <h2 th:text="#{home.classicRecommend}">精品推荐</h2>
             </div>
             <div class="picRecommend cf" id="classicBooks" th:if="${bookMap['4']}">
                 <div class="itemsList" th:each="book : ${bookMap['4']}">
@@ -117,7 +117,7 @@
                     </a>
                     <div class="items_txt">
                         <h4><a th:href="'/book/'+${book.bookId}+'.html'" th:text="${book.bookName}"></a></h4>
-                        <p class="author"><a href="javascript:void(0)" th:text="'作者：'+${book.authorName}"></a></p>
+                        <p class="author"><a href="javascript:void(0)" th:text="#{home.authorColon}+${book.authorName}"></a></p>
                         <p class="intro"><a th:href="'/book/'+${book.bookId}+'.html'" th:utext="${book.bookDesc}"></a>
                         </p>
                     </div>
@@ -128,14 +128,14 @@
         <div id="bookrank2_ShowBookRank">
             <div class="rightBox ">
                 <div class="title cf">
-                    <h3 class="on">新书榜单</h3>
+                    <h3 class="on" th:text="#{home.newRank}">新书榜单</h3>
                 </div>
                 <div class="rightList">
                     <ul id="newRankBooks">
 
 
                     </ul>
-                    <div class="more"><a href="/book/book_ranking.html?type=1">查看更多&gt;</a></div>
+                    <div class="more"><a href="/book/book_ranking.html?type=1" th:text="#{home.viewMore}">查看更多&gt;</a></div>
                 </div>
             </div>
         </div>
@@ -143,17 +143,17 @@
     <div class="channelWrap channelTable cf">
         <div class="leftBox">
             <div class="title">
-                <h2>最新更新</h2>
+                <h2 th:text="#{home.latestUpdate}">最新更新</h2>
             </div>
             <div class="updateTable">
                 <table cellpadding="0" cellspacing="0">
                     <thead>
                     <tr>
-                        <th class="style">类别</th>
-                        <th class="name">书名</th>
-                        <th class="chapter">最新章节</th>
-                        <th class="author">作者</th>
-                        <th class="time">更新时间</th>
+                        <th class="style" th:text="#{home.category}">类别</th>
+                        <th class="name" th:text="#{home.bookName}">书名</th>
+                        <th class="chapter" th:text="#{home.latestChapter}">最新章节</th>
+                        <th class="author" th:text="#{home.author}">作者</th>
+                        <th class="time" th:text="#{home.updateTime}">更新时间</th>
                     </tr>
                     </thead>
                     <tbody id="newRankBooks2">
@@ -166,14 +166,14 @@
         <div id="bookrank5_ShowBookRank">
             <div class="rightBox mb20">
                 <div class="title cf">
-                    <h3 class="on">更新榜单</h3>
+                    <h3 class="on" th:text="#{home.updateRank}">更新榜单</h3>
                 </div>
                 <div class="rightList">
                     <ul id="updateRankBooks">
 
 
                     </ul>
-                    <div class="more"><a href="/book/book_ranking.html?type=2">查看更多&gt;</a></div>
+                    <div class="more"><a href="/book/book_ranking.html?type=2" th:text="#{home.viewMore}">查看更多&gt;</a></div>
                 </div>
             </div>
         </div>

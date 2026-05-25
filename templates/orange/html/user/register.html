@@ -17,24 +17,24 @@
     <div class="userBox cf">
         <form method="post" action="./register.html" id="form2">
             <div class="user_l">
-                <h3 th:text="'注册'+${application.website.name}+'小说账号'"></h3>
+                <h3 th:text="#{register.title}"></h3>
                 <ul class="log_list">
                     <li><span id="LabErr"></span></li>
                     <li><input name="txtUName" type="text" id="txtUName" class="s_input icon_name"
-                               placeholder="请输入您的手机号码"/></li>
+                               th:placeholder="#{register.username}"/></li>
                     <li><input name="txtPassword" type="password" id="txtPassword" class="s_input icon_key"
-                               placeholder="请输入密码：6-20位字母/数字"/></li>
+                               th:placeholder="#{register.password}"/></li>
                     <li class="log_code cf"><input name="TxtChkCode" type="text" maxlength="4" id="TxtChkCode"
-                                                   class="s_input icon_code" placeholder="请输入验证码"/><img
+                                                   class="s_input icon_code" th:placeholder="#{register.velCode}"/><img
                             style="border: 1px solid #eee" class="code_pic" src="" id="chkd"
                             onclick="getVerify(this);"/></li>
-                    <li><input type="button" name="btnRegister" value="注册" id="btnRegister" class="btn_red"/></li>
+                    <li><input type="button" name="btnRegister" th:value="#{top.register}" id="btnRegister" class="btn_red"/></li>
                 </ul>
             </div>
         </form>
         <div class="user_r">
-            <p class="tit">已有账号？</p>
-            <a href="/user/login.html" class="btn_ora_white">立即登录</a>
+            <p class="tit" th:text="#{register.hasAccount}">已有账号？</p>
+            <a href="/user/login.html" class="btn_ora_white" th:text="#{register.goLogin}">立即登录</a>
             <div class="fast_login" style="display:none;">
                 <div class="fast_tit">
                     <p class="lines"></p>

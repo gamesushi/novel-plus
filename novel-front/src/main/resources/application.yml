@@ -5,6 +5,10 @@ spring:
   profiles:
     active: dev
     include: website,alipay,oss
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+    fallback-to-system-locale: false
 
 jwt:
   secret: novel!#20191230

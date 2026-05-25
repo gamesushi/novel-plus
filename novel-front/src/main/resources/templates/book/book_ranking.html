@@ -22,7 +22,7 @@
 
                     <div class="book_tit">
                         <div class="fl">
-                            <h3 class="font26 mt5 mb5" id="rankName">点击榜</h3>
+                            <h3 class="font26 mt5 mb5" id="rankName" th:text="#{rank.click}">点击榜</h3>
                         </div>
                         <a class="fr"></a>
                     </div>
@@ -30,12 +30,12 @@
                         <table cellpadding="0" cellspacing="0">
                             <thead>
                             <tr>
-                                <th class="rank">排名</th>
-                                <th class="style">类别</th>
-                                <th class="name">书名</th>
-                                <th class="chapter">最新章节</th>
-                                <th class="author">作者</th>
-                                <th class="word">字数</th>
+                                <th class="rank" th:text="#{rank.num}">排名</th>
+                                <th class="style" th:text="#{rank.style}">类别</th>
+                                <th class="name" th:text="#{rank.name}">书名</th>
+                                <th class="chapter" th:text="#{rank.chapter}">最新章节</th>
+                                <th class="author" th:text="#{rank.author}">作者</th>
+                                <th class="word" th:text="#{rank.word}">字数</th>
                             </tr>
                             </thead>
                             <tbody id="bookRankList">
@@ -53,14 +53,14 @@
         <div class="wrap_right fr">
             <div class="wrap_inner wrap_right_cont mb20">
                 <div class="title cf noborder">
-                    <h3 class="on">排行榜</h3>
+                    <h3 class="on" th:text="#{rank.title}">排行榜</h3>
                 </div>
                 <div class="rightList2">
                     <ul id="rankType">
-                        <li><a class="on" href="javascript:listRank(0)">点击榜</a></li>
-                        <li><a href="javascript:listRank(1)">新书榜</a></li>
-                        <li><a href="javascript:listRank(2)">更新榜</a></li>
-                        <li><a href="javascript:listRank(3)">评论榜</a></li>
+                        <li><a class="on" href="javascript:listRank(0)" th:text="#{rank.click}">点击榜</a></li>
+                        <li><a href="javascript:listRank(1)" th:text="#{rank.new}">新书榜</a></li>
+                        <li><a href="javascript:listRank(2)" th:text="#{rank.update}">更新榜</a></li>
+                        <li><a href="javascript:listRank(3)" th:text="#{rank.comment}">评论榜</a></li>
                     </ul>
                 </div>
             </div>
@@ -72,7 +72,27 @@
 </div>
 <div th:replace="common/js :: js"></div>
 
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    window.rankNames = {
+        0: [[#{rank.click}]],
+        1: [[#{rank.new}]],
+        2: [[#{rank.update}]],
+        3: [[#{rank.comment}]]
+    };
+    window.rankWordUnit = [[#{rank.word.unit}]];
+    /*]]>*/
+</script>
+
 <script type="text/javascript">
+    function formatWordCount(wordCount) {
+        if (window.rankWordUnit && window.rankWordUnit.indexOf("k") !== -1) {
+            return (wordCount / 1000).toFixed(0) + " " + window.rankWordUnit;
+        }
+        var unit = window.rankWordUnit || "万字";
+        return (wordCount / 10000).toFixed(2) + unit;
+    }
+
     $("#rankType a").click(function () {
         $("#rankType .on").removeClass("on");
         $(this).addClass("on");
@@ -109,7 +129,7 @@
                             "                                <td class=\"chapter\"><a href=\"/book/"+book.id+".html\" >"+book.lastIndexName+"</a>\n" +
                             "                                </td>\n" +
                             "                                <td class=\"author\"><a href=\"javascript:void(0)\">"+book.authorName+"</a></td>\n" +
-                            "                                <td class=\"word\">"+(book.wordCount / 10000).toFixed(2)+"万</td>\n" +
+                            "                                <td class=\"word\">"+formatWordCount(book.wordCount)+"</td>\n" +
                             "                            </tr>");
                     }
                     $("#bookRankList").html(bookRankListHtml);
@@ -123,25 +143,8 @@
                 layer.alert('网络异常');
             }
         })
-        switch (rankType) {
-            case 0 : {
-                $("#rankName").html("点击榜");
-                break;
-            }
-            case 1 : {
-                $("#rankName").html("新书榜");
-                break;
-            }
-            case 2 : {
-                $("#rankName").html("更新榜");
-                break;
-            }
-            case 3 : {
-                $("#rankName").html("评论榜");
-                break;
-            }
-
-        }
+        var name = window.rankNames ? window.rankNames[rankType] : "点击榜";
+        $("#rankName").html(name);
 
     }
 </script>

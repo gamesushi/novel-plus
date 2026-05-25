@@ -17,19 +17,19 @@
     <div class="userBox cf">
         <div class="user_l">
             <form method="post" action="./login.html" id="form1">
-                <h3 th:text="'登录'+${application.website.name}"></h3>
+                <h3 th:text="#{login.title}"></h3>
                 <ul class="log_list">
                     <li><span id="LabErr"></span></li>
-                    <li><input name="txtUName" type="text" id="txtUName" placeholder="手机号码" class="s_input icon_name" /></li>
-                    <li><input name="txtPassword" type="password" id="txtPassword" placeholder="密码" class="s_input icon_key" /></li>
-                    <li class="autologin cf"><label class="fl"><input id="autoLogin" type="checkbox"  /><em>下次自动登录</em></label></li>
-                    <li><input type="button" name="btnLogin" value="登录" id="btnLogin" class="btn_red" /></li>
+                    <li><input name="txtUName" type="text" id="txtUName" th:placeholder="#{register.username}" class="s_input icon_name" /></li>
+                    <li><input name="txtPassword" type="password" id="txtPassword" th:placeholder="#{login.password}" class="s_input icon_key" /></li>
+                    <li class="autologin cf"><label class="fl"><input id="autoLogin" type="checkbox"  /><em th:text="#{login.remember}">下次自动登录</em></label></li>
+                    <li><input type="button" name="btnLogin" th:value="#{top.login}" id="btnLogin" class="btn_red" /></li>
                 </ul>
             </form>
         </div>
         <div class="user_r">
-            <p class="tit">还没有注册账号？</p>
-            <a href="/user/register.html" class="btn_ora_white">立即注册</a>
+            <p class="tit" th:text="#{login.noAccount}">还没有注册账号？</p>
+            <a href="/user/register.html" class="btn_ora_white" th:text="#{login.goRegister}">立即注册</a>
             <div class="fast_login" style="display:none;">
                 <div class="fast_tit">
                     <p class="lines"></p>
